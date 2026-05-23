@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="QImageProcessor" format=3 uid="uid://b5s8glnu0iumx"]
+
+[ext_resource type="Script" uid="uid://ci7cmqmyvtqta" path="res://addons/q_image_processor/QImageProcessor.gd" id="1_tbi10"]
+
+[sub_resource type="Shader" id="Shader_tbi10"]
+code = "shader_type canvas_item;
+
+uniform sampler2D noise;
+
+void fragment() {
+	COLOR = texture(noise, UV);
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6hy4f"]
+frequency = 0.001
+fractal_octaves = 6
+fractal_gain = 0.6
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jrdkh"]
+width = 2048
+height = 2048
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_6hy4f")
+seamless = true
+as_normal_map = true
+seamless_blend_skirt = 1.0
+bump_strength = 29.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hy4f"]
+shader = SubResource("Shader_tbi10")
+shader_parameter/noise = SubResource("NoiseTexture2D_jrdkh")
+
+[resource]
+script = ExtResource("1_tbi10")
+export_mode = 3
+quality = 0.9
+resolution = Vector2i(2048, 2048)
+shader_material = SubResource("ShaderMaterial_6hy4f")
+associated = false
+metadata/_custom_type_script = "uid://ci7cmqmyvtqta"

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6brdla4vmg4i" path="res://enviorment/enviorment.glb" id="1_ig7tw"]
 [ext_resource type="LightmapGIData" uid="uid://t7bcp7dguesr" path="res://enviorment/main.lmbake" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://cmicrpvq77bcp" path="res://rigid_body_3d.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://8wwi7sd3w6ul" path="res://player/player.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_top_color = Color(0.66875005, 0.26250002, 0.75, 1)
@@ -19,15 +19,6 @@ sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
 background_mode = 2
 sky = SubResource("Sky_h2yge")
 tonemap_mode = 4
-tonemap_exposure = 0.67
-glow_enabled = true
-glow_bloom = 1.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bvp3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 
 [node name="Node3D" type="Node3D" unique_id=922714558]
 
@@ -47,8 +38,8 @@ transform = Transform3D(0.9997792, 0.01819709, -0.010506138, 2.7805946e-08, 0.49
 light_color = Color(0.53, 0.52257997, 0.30740002, 1)
 shadow_enabled = true
 
-[node name="enviorment" parent="." unique_id=102191001 instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799191, 0, 0.24150944)
+[node name="enviorment" parent="." unique_id=1842953748 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799191, 0, -5.4713955)
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1698951347]
 quality = 0
@@ -56,24 +47,5 @@ directional = true
 generate_probes_subdiv = 3
 light_data = ExtResource("2_0xm2m")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1545475338]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.465452, 3.7389932)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
-contact_monitor = true
-max_contacts_reported = 4
-script = ExtResource("3_h2yge")
-speed = 1.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1419813348]
-transform = Transform3D(-0.2649671, 0, 0.9642575, 0, 1, 0, -0.9642575, 0, -0.2649671, 0, 0, 0)
-gi_mode = 2
-mesh = SubResource("CapsuleMesh_1bvp3")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=898749182]
-shape = SubResource("CapsuleShape3D_lquwl")
-
-[node name="Camera3D" type="Camera3D" parent="RigidBody3D" unique_id=20512519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+[node name="player" parent="." unique_id=1276657411 instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6409645, 9.465452, 0.6456475)
