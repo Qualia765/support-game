@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://qprmdwwutmfg"]
+
+[ext_resource type="Script" uid="uid://ci7cmqmyvtqta" path="res://addons/q_image_processor/QImageProcessor.gd" id="1_8vh3o"]
+[ext_resource type="Script" uid="uid://ua4742desrk7" path="res://addons/q_image_processor/QImageProcessors.gd" id="3_d6n4u"]
+
+[resource]
+script = ExtResource("3_d6n4u")
+metadata/_custom_type_script = "uid://ua4742desrk7"

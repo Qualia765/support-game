@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6brdla4vmg4i"
-path="res://.godot/imported/enviorment.glb-6b37565f0c061481141a55b7378537b1.scn"
+path="res://.godot/imported/enviorment.glb-d2bf87a3bda3be62f786fc680f5f9aff.scn"
 
 [deps]
 
-source_file="res://enviorment.glb"
-dest_files=["res://.godot/imported/enviorment.glb-6b37565f0c061481141a55b7378537b1.scn"]
+source_file="res://enviorment/enviorment.glb"
+dest_files=["res://.godot/imported/enviorment.glb-d2bf87a3bda3be62f786fc680f5f9aff.scn"]
 
 [params]
 
@@ -50,8 +50,8 @@ _subresources={
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
-"save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://mesh.res",
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "res://enviorment/mesh.res",
 "save_to_file/path": "uid://b5ffkbqb48gwc"
 }
 }

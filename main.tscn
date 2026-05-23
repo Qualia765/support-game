@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c46gxrogsd7w4"]
 
-[ext_resource type="PackedScene" uid="uid://c6brdla4vmg4i" path="res://enviorment.glb" id="1_ig7tw"]
-[ext_resource type="LightmapGIData" uid="uid://t7bcp7dguesr" path="res://main.lmbake" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c6brdla4vmg4i" path="res://enviorment/enviorment.glb" id="1_ig7tw"]
+[ext_resource type="LightmapGIData" uid="uid://t7bcp7dguesr" path="res://enviorment/main.lmbake" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://cmicrpvq77bcp" path="res://rigid_body_3d.gd" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]

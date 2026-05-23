@@ -15,6 +15,14 @@ run/main_scene="uid://c46gxrogsd7w4"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="support-game"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/q_image_processor/plugin.cfg")
+
 [filesystem]
 
 import/blender/enabled=false
@@ -54,5 +62,3 @@ jump={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
