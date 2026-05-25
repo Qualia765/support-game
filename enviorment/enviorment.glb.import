@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c6brdla4vmg4i"
-path="res://.godot/imported/enviorment.glb-6b37565f0c061481141a55b7378537b1.scn"
+path="res://.godot/imported/enviorment.glb-d2bf87a3bda3be62f786fc680f5f9aff.scn"
 
 [deps]
 
-source_file="res://enviorment.glb"
-dest_files=["res://.godot/imported/enviorment.glb-6b37565f0c061481141a55b7378537b1.scn"]
+source_file="res://enviorment/enviorment.glb"
+dest_files=["res://.godot/imported/enviorment.glb-d2bf87a3bda3be62f786fc680f5f9aff.scn"]
 
 [params]
 
@@ -33,10 +33,28 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
-import_script/path=""
+import_script/path="uid://4fey6raah53i"
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"@MATERIAL:0": {
+"use_external/enabled": true,
+"use_external/path": "uid://xdp2ncm3k0s6"
+}
+},
+"meshes": {
+"enviorment_Cube_002": {
+"generate/lightmap_uv": 1,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 20.0,
+"save_to_file/enabled": false,
+"save_to_file/fallback_path": "res://enviorment/mesh.res",
+"save_to_file/path": "uid://b5ffkbqb48gwc"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
