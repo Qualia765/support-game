@@ -10,7 +10,6 @@ var time_till_recalculate: float = 0.
 
 func _ready():
 	player.movement_vector = func(): return Vector2(-1, 0)
-	#player.movement_vector = func(): return Input.get_vector("right", "left", "foward", "back")
 
 
 func _physics_process(delta: float) -> void:

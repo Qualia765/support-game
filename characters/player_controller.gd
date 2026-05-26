@@ -37,9 +37,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	var goal_fov := ZOOM_FOV if Input.is_action_pressed("zoom") else NORMAL_FOV
 	camera_3d.fov = lerpf(camera_3d.fov, goal_fov, delta * ZOOM_SPEED)
+	if player.is_grounded:
+		animation_tree.set("parameters/_FallBlend/blend_amount", 0.01)
+	else:
+		animation_tree.set("parameters/_FallBlend/blend_amount", 0.99)
+	#print(animation_tree.tree_root.set.set)
+	
+	animation_tree.set("parameters/IdleWalkBlend/blend_amount", tanh(player.linear_velocity.length()/ 4))
 
 
-#func _on_player_actually_jumped() -> void:
-	#animation_tree.tree_root.set_parameter("parameters/JumpShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	#animation_tree.tree_root.set_parameter("parameters/_FallBlend/request", 0.99)
+func _on_player_actually_jumped() -> void:
+	animation_tree.set("parameters/JumpShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	animation_tree.set("parameters/_FallBlend/blend_amount", 0.99)
 	

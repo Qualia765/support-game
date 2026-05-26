@@ -3,6 +3,7 @@ class_name Character extends RigidBody3D
 var facing: Vector3 = Vector3.FORWARD
 var movement_vector: Callable = func(): return Vector2(0, -1)
 var alt_impact_sound: bool = false
+var is_grounded: bool = false
 
 signal actually_jumped
 
@@ -97,6 +98,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 	#endregion
 	
 	var gotta_jump: bool = false
+	is_grounded = false
 	
 	# if u pressed it just a little late
 	if jump_pressed_recently == -1:
@@ -120,6 +122,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		
 		if not foot_collision_normal.is_zero_approx():
 			if foot_collision_normal.y > MIN_DOT_NORMAL:
+				is_grounded = true
 				var foward := facing.cross(Vector3.UP).normalized()
 				var left := foward.cross(Vector3.UP).normalized()
 				var current_movement_vector: Vector2 = movement_vector.call()
@@ -153,13 +156,17 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		position = Vector3(0, 10, 0)
 		linear_velocity = Vector3.ZERO
 	
-	if position.y < -10:
-		if position.x > 24:
+	if position.x > 24:
+		if position.y < -10:
 			linear_velocity = -position.normalized() * 10
 			linear_velocity.y += 20
-		else:
+			position.y = -10
+			sound_big_doing.play()
+	else:
+		if position.y < -15:
 			linear_velocity = Vector3(15, 15, 0)
-		position.y = -10
-		sound_big_doing.play()
+			position.y = -15
+			sound_big_doing.play()
+
 	
 	previous_velocity = linear_velocity
