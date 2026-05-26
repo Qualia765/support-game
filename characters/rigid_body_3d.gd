@@ -2,7 +2,9 @@ class_name Character extends RigidBody3D
 
 var facing: Vector3 = Vector3.FORWARD
 var movement_vector: Callable = func(): return Vector2(0, -1)
+var alt_impact_sound: bool = false
 
+signal actually_jumped
 
 ## call when the player/ai wanna jump
 func jump():
@@ -73,6 +75,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		var impact_nodes := scene.instantiate()
 		impact_nodes.position = global_basis .inverse() * state.get_contact_local_position(0)
 		impact_nodes.volume = volume
+		impact_nodes.alt_style = alt_impact_sound
 		var basis_z = global_basis.inverse() * state.get_contact_local_normal(0)
 		var basis_x = Vector3(1.238947,0.1967823,0.78234).cross(basis_z).normalized()
 		var basis_y = basis_x.cross(basis_z).normalized()
@@ -93,10 +96,12 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		sound_wind.volume_db = lerpf(-50, -10, intensity)
 	#endregion
 	
+	var gotta_jump: bool = false
+	
 	# if u pressed it just a little late
 	if jump_pressed_recently == -1:
-		_jump(state)
 		jump_pressed_recently = 0
+		gotta_jump = true
 	
 	if state.get_contact_count() != 0:
 		collision_normal = Vector3.ZERO
@@ -111,7 +116,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		# if you press it on time or early
 		if jump_pressed_recently > 0:
 			jump_pressed_recently = 0
-			_jump(state)
+			gotta_jump = true
 		
 		if not foot_collision_normal.is_zero_approx():
 			if foot_collision_normal.y > MIN_DOT_NORMAL:
@@ -128,7 +133,21 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		
 		if jump_pressed_recently > 0:
 			jump_pressed_recently -= 1
-
+	
+	if gotta_jump:
+		linear_velocity += collision_normal * JUMP_AMOUNT
+		jump_pressed_recently = 0
+		off_edge_recently = 0
+		
+		var impact_nodes := DOING.instantiate()
+		impact_nodes.position = global_position
+		var basis_z = -collision_normal
+		var basis_x = Vector3(1.238947,0.1967823,0.78234).cross(basis_z).normalized()
+		var basis_y = basis_x.cross(basis_z).normalized()
+		impact_nodes.basis = Basis(basis_x, basis_y, basis_z)
+		get_tree().root.add_child(impact_nodes)
+		
+		actually_jumped.emit()
 	
 	if position.y == NAN or not position.is_finite():
 		position = Vector3(0, 10, 0)
@@ -144,15 +163,3 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		sound_big_doing.play()
 	
 	previous_velocity = linear_velocity
-
-
-func _jump(_state: PhysicsDirectBodyState3D):
-	linear_velocity += collision_normal * JUMP_AMOUNT
-	
-	var impact_nodes := DOING.instantiate()
-	impact_nodes.position = global_position
-	var basis_z = -collision_normal
-	var basis_x = Vector3(1.238947,0.1967823,0.78234).cross(basis_z).normalized()
-	var basis_y = basis_x.cross(basis_z).normalized()
-	impact_nodes.basis = Basis(basis_x, basis_y, basis_z)
-	get_tree().root.add_child(impact_nodes)

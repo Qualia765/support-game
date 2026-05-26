@@ -18,6 +18,9 @@ material = SubResource("StandardMaterial3D_ggbst")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ggbst"]
+radius = 0.4
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toq4n"]
 albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
 metallic = 1.0
@@ -58,7 +61,11 @@ script = ExtResource("4_ggbst")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=10693581]
 path_desired_distance = 2.0
-simplify_path = true
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="." unique_id=938950851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("SphereShape3D_ggbst")
+target_position = Vector3(0, -0.2, 0)
 
 [node name="eye" type="Node3D" parent="." unique_id=1975396988]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

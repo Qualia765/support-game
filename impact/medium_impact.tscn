@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dgmpamc78wcmg" path="res://impact/impact.gd" id="1_g3w2d"]
 [ext_resource type="AudioStream" uid="uid://o4s7xf8asvy7" path="res://sounds/medium/medium_random.tres" id="2_48cbd"]
+[ext_resource type="AudioStream" uid="uid://bam82tahacfxd" path="res://sounds/medium_clank/medium_clank_random.tres" id="3_48cbd"]
 
 [sub_resource type="Gradient" id="Gradient_x67da"]
 colors = PackedColorArray(0.20712623, 0.230483, 0.2717684, 1, 1, 1, 0.9254902, 1)
@@ -35,6 +36,7 @@ size = Vector3(0.05, 0.05, 0.05)
 
 [node name="MediumImpact" type="Node3D" unique_id=1613927455]
 script = ExtResource("1_g3w2d")
+alt_stream = ExtResource("2_48cbd")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1721033981]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.0000001, 0, -1, 0, -4.371139e-08, 0, 0, 0)
@@ -46,7 +48,7 @@ process_material = SubResource("ParticleProcessMaterial_6tn3k")
 draw_pass_1 = SubResource("BoxMesh_u61rl")
 
 [node name="Sound" type="AudioStreamPlayer3D" parent="." unique_id=200456241]
-stream = ExtResource("2_48cbd")
+stream = ExtResource("3_48cbd")
 volume_db = -10.0
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]

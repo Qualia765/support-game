@@ -3,6 +3,8 @@ extends Node
 @onready var agent: NavigationAgent3D = $"../NavigationAgent3D"
 @onready var player: Character = $".."
 @onready var eye: Node3D = $"../eye"
+@onready var shape_cast_3d: ShapeCast3D = $"../ShapeCast3D"
+
 
 var time_till_recalculate: float = 0.
 
@@ -24,5 +26,9 @@ func _physics_process(delta: float) -> void:
 	var basis_y = basis_x.cross(basis_z).normalized()
 	eye.basis = Basis(basis_x, basis_y, basis_z)
 	
-	if randf() < 0.002 or player.off_edge_recently == player.JUMP_MISS_TIMING_FORGIVNESS_FRAMES - 2:
+	if randf() < 0.002 or (
+		player.off_edge_recently < player.JUMP_MISS_TIMING_FORGIVNESS_FRAMES
+		and player.off_edge_recently != 0
+		and not shape_cast_3d.is_colliding()
+	):
 		player.jump()
