@@ -24,7 +24,7 @@ const JUMP_MISS_TIMING_FORGIVNESS_FRAMES: int = 5
 ## eg: cos(36deg) = 0.8
 const MIN_DOT_NORMAL: float = 0.8
 const MIN_COLLISION_SPEED_FOR_IMPACT: float = 2.
-const MAX_COLLISION_SPEED_FOR_IMPACT: float = 8.
+const MAX_COLLISION_SPEED_FOR_IMPACT: float = 12.
 const MIN_WIND_SPEED: float = 4.
 const MAX_WIND_SPEED: float = 16.
 ## any collisions below this are considered part of foot collisions
@@ -135,8 +135,11 @@ func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:
 		linear_velocity = Vector3.ZERO
 	
 	if position.y < -10:
-		linear_velocity = -position.normalized() * 10
-		linear_velocity.y += 20
+		if position.x > 24:
+			linear_velocity = -position.normalized() * 10
+			linear_velocity.y += 20
+		else:
+			linear_velocity = Vector3(15, 15, 0)
 		position.y = -10
 		sound_big_doing.play()
 	

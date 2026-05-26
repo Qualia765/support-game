@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boljsrjg4os1v"
-path="res://.godot/imported/GunGirlFace.png-a4317676d05f56f2ba9b695e2fd64bd4.ctex"
+uid="uid://dig1t48bi8xmm"
+path="res://.godot/imported/GunGirlFace.png-cb6cdb749c4f9fc81c776dd575204369.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GunGirlFace.png"
-dest_files=["res://.godot/imported/GunGirlFace.png-a4317676d05f56f2ba9b695e2fd64bd4.ctex"]
+source_file="res://GunGirl/GunGirlFace.png"
+dest_files=["res://.godot/imported/GunGirlFace.png-cb6cdb749c4f9fc81c776dd575204369.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
-[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://9zrdcwthbv84"]
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://ba0rdcwthbv84"]
 
-[ext_resource type="AudioStream" path="res://sounds/big_doing/big_doing-01.ogg" id="1_aaaaa"]
-[ext_resource type="AudioStream" path="res://sounds/big_doing/big_doing-02.ogg" id="2_aaaaa"]
-[ext_resource type="AudioStream" path="res://sounds/big_doing/big_doing-03.ogg" id="3_aaaaa"]
-[ext_resource type="AudioStream" path="res://sounds/big_doing/big_doing-04.ogg" id="4_aaaaa"]
-[ext_resource type="AudioStream" path="res://sounds/big_doing/big_doing-05.ogg" id="5_aaaaa"]
+[ext_resource type="AudioStream" uid="uid://lyq8wsrv4j5p" path="res://sounds/big_doing/big_doing-01.ogg" id="1_aaaaa"]
+[ext_resource type="AudioStream" uid="uid://bjplvq0bk4wyp" path="res://sounds/big_doing/big_doing-02.ogg" id="2_aaaaa"]
+[ext_resource type="AudioStream" uid="uid://bmhduyd510ebf" path="res://sounds/big_doing/big_doing-03.ogg" id="3_aaaaa"]
+[ext_resource type="AudioStream" uid="uid://daq837ava16gd" path="res://sounds/big_doing/big_doing-04.ogg" id="4_aaaaa"]
+[ext_resource type="AudioStream" uid="uid://xfhujm14nw1a" path="res://sounds/big_doing/big_doing-05.ogg" id="5_aaaaa"]
 
 [resource]
 random_pitch = 1.1892071
