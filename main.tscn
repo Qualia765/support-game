@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c6brdla4vmg4i" path="res://enviorment/enviorment.glb" id="1_ig7tw"]
 [ext_resource type="LightmapGIData" uid="uid://t7bcp7dguesr" path="res://enviorment/main.lmbake" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://8wwi7sd3w6ul" path="res://player/player.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://8wwi7sd3w6ul" path="res://characters/player.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
 sky_top_color = Color(0.66875005, 0.26250002, 0.75, 1)
@@ -43,9 +43,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00799191, 0, -5.4713955)
 
 [node name="LightmapGI" type="LightmapGI" parent="." unique_id=1698951347]
 quality = 0
+supersampling = true
+supersampling_factor = 4.0
 directional = true
 generate_probes_subdiv = 3
 light_data = ExtResource("2_0xm2m")
 
 [node name="player" parent="." unique_id=1276657411 instance=ExtResource("3_h2yge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6409645, 9.465452, 0.6456475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6409645, 0.14337969, 0.6456475)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1367262017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.137724, 1.2052892, 7.851851)
+light_color = Color(1, 0.6039216, 1, 1)
+light_energy = 16.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_attenuation = 2.0

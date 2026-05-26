@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://8wwi7sd3w6ul"]
+
+[ext_resource type="Script" uid="uid://cmicrpvq77bcp" path="res://characters/rigid_body_3d.gd" id="1_oul6g"]
+[ext_resource type="AudioStream" uid="uid://ba0rdcwthbv84" path="res://sounds/big_doing/big_doing_random.tres" id="5_g6k8r"]
+[ext_resource type="AudioStream" uid="uid://b7d71ijrbwvvk" path="res://sounds/wind.ogg" id="7_boad6"]
+[ext_resource type="Script" uid="uid://b0ga2qfskt7ig" path="res://characters/player_controller.gd" id="7_j31ep"]
+[ext_resource type="Script" uid="uid://bhmabopke75hu" path="res://sounds/basic_sound_manager.gd" id="8_rgyib"]
+[ext_resource type="AudioStream" uid="uid://bqekb3wu8vw0c" path="res://sounds/zoom/open.ogg" id="9_8t03j"]
+[ext_resource type="AudioStream" uid="uid://yhpcnepi5dnh" path="res://sounds/zoom/close.ogg" id="10_2ieo8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+friction = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bvp3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
+
+[node name="player" type="RigidBody3D" unique_id=1276657411]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_oul6g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1742290984]
+transform = Transform3D(-0.2649671, 0, 0.9642575, 0, 1, 0, -0.9642575, 0, -0.2649671, 0, 0, 0)
+gi_mode = 2
+mesh = SubResource("CapsuleMesh_1bvp3")
+surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=49587010]
+shape = SubResource("CapsuleShape3D_lquwl")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1371310145]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="SoundBigDoing" type="AudioStreamPlayer" parent="." unique_id=1676026776]
+stream = ExtResource("5_g6k8r")
+volume_db = -10.0
+
+[node name="SoundWind" type="AudioStreamPlayer" parent="." unique_id=448229805]
+stream = ExtResource("7_boad6")
+volume_db = -44.146
+
+[node name="SoundZoom" type="AudioStreamPlayer" parent="." unique_id=1216577711]
+volume_db = -9.0
+script = ExtResource("8_rgyib")
+sounds = Dictionary[StringName, AudioStream]({
+&"close": ExtResource("10_2ieo8"),
+&"open": ExtResource("9_8t03j")
+})
+
+[node name="PlayerController" type="Node" parent="." unique_id=1791665096]
+script = ExtResource("7_j31ep")

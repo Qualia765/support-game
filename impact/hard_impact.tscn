@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://28qwnsxmorew"]
+
+[ext_resource type="Script" uid="uid://dgmpamc78wcmg" path="res://impact/impact.gd" id="1_fnggf"]
+[ext_resource type="AudioStream" uid="uid://eoagajxaahbc" path="res://sounds/hard/hard_random.tres" id="2_fnggf"]
+
+[sub_resource type="Gradient" id="Gradient_x67da"]
+colors = PackedColorArray(0.20712623, 0.230483, 0.2717684, 1, 1, 1, 0.9254902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pvcw0"]
+gradient = SubResource("Gradient_x67da")
+
+[sub_resource type="Curve" id="Curve_caylm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.9969136, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6l1y3"]
+curve = SubResource("Curve_caylm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6tn3k"]
+lifetime_randomness = 1.0
+spread = 116.129
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+scale_min = 0.5
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_6l1y3")
+color_initial_ramp = SubResource("GradientTexture1D_pvcw0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kuxu"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_u61rl"]
+material = SubResource("StandardMaterial3D_7kuxu")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="HardImpact" type="Node3D" unique_id=1613927455]
+script = ExtResource("1_fnggf")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1721033981]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1.0000001, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+emitting = false
+amount = 210
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.92
+process_material = SubResource("ParticleProcessMaterial_6tn3k")
+draw_pass_1 = SubResource("BoxMesh_u61rl")
+
+[node name="Sound" type="AudioStreamPlayer3D" parent="." unique_id=200456241]
+stream = ExtResource("2_fnggf")
+
+[connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]
