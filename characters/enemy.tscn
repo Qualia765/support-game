@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dqybmi1l10uey"]
+
+[ext_resource type="Script" uid="uid://cmicrpvq77bcp" path="res://characters/rigid_body_3d.gd" id="1_f76jb"]
+[ext_resource type="AudioStream" uid="uid://ba0rdcwthbv84" path="res://sounds/big_doing/big_doing_random.tres" id="2_ki21s"]
+[ext_resource type="AudioStream" uid="uid://b7d71ijrbwvvk" path="res://sounds/wind.ogg" id="3_i5cme"]
+[ext_resource type="Script" uid="uid://fquy8myi588s" path="res://characters/enemy_controller.gd" id="4_ggbst"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
+friction = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggbst"]
+albedo_color = Color(0.7025398, 0.3562351, 0.42374143, 1)
+roughness = 0.5
+rim_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bvp3"]
+material = SubResource("StandardMaterial3D_ggbst")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toq4n"]
+albedo_color = Color(0.48962224, 0.48962224, 0.48962218, 1)
+metallic = 1.0
+roughness = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u8tuc"]
+material = SubResource("StandardMaterial3D_toq4n")
+radial_segments = 16
+rings = 0
+
+[node name="enemy" type="RigidBody3D" unique_id=1276657411]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_h2yge")
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_f76jb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1742290984]
+gi_mode = 2
+mesh = SubResource("CapsuleMesh_1bvp3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=49587010]
+shape = SubResource("CapsuleShape3D_lquwl")
+
+[node name="SoundBigDoing" type="AudioStreamPlayer3D" parent="." unique_id=1976181357]
+stream = ExtResource("2_ki21s")
+volume_db = -10.0
+
+[node name="SoundWind" type="AudioStreamPlayer3D" parent="." unique_id=1716304068]
+stream = ExtResource("3_i5cme")
+volume_db = -44.146
+
+[node name="EnemyController" type="Node" parent="." unique_id=1791665096]
+script = ExtResource("4_ggbst")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=10693581]
+path_desired_distance = 2.0
+simplify_path = true
+
+[node name="eye" type="Node3D" parent="." unique_id=1975396988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="eye" unique_id=241832371]
+transform = Transform3D(0.39999998, 0, 0, 0, -1.7484554e-08, 0.39999998, 0, -0.39999998, -1.7484554e-08, 0, 0, -0.4)
+gi_mode = 2
+mesh = SubResource("CylinderMesh_u8tuc")

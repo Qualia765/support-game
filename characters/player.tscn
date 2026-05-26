@@ -11,13 +11,17 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_h2yge"]
 friction = 0.3
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bvp3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j31ep"]
+albedo_color = Color(0.6864336, 0.78761023, 0.7619557, 1)
+roughness = 0.5
+rim_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1bvp3"]
+material = SubResource("StandardMaterial3D_j31ep")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lquwl"]
 
-[node name="player" type="RigidBody3D" unique_id=1276657411]
+[node name="player" type="RigidBody3D" unique_id=1276657411 groups=["player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -30,7 +34,6 @@ script = ExtResource("1_oul6g")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1742290984]
 gi_mode = 2
 mesh = SubResource("CapsuleMesh_1bvp3")
-surface_material_override/0 = SubResource("StandardMaterial3D_0xm2m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=49587010]
 shape = SubResource("CapsuleShape3D_lquwl")

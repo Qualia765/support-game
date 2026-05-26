@@ -38,12 +38,6 @@ materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
 _subresources={
-"materials": {
-"@MATERIAL:0": {
-"use_external/enabled": true,
-"use_external/path": "uid://xdp2ncm3k0s6"
-}
-},
 "meshes": {
 "enviorment_Cube_002": {
 "generate/lightmap_uv": 1,

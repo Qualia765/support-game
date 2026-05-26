@@ -31,8 +31,8 @@ const MAX_WIND_SPEED: float = 16.
 ## for determining if movement is allowed
 const MAX_FOOT_LOCATION: float = -0.46
 
-@onready var sound_wind: AudioStreamPlayer = $SoundWind
-@onready var sound_big_doing: AudioStreamPlayer = $SoundBigDoing
+@onready var sound_wind: Node = $SoundWind
+@onready var sound_big_doing: Node = $SoundBigDoing
 
 const SOFT_IMPACT = preload("uid://dn018lwvhepwn")
 const MEDIUM_IMPACT = preload("uid://deweykc4qspfs")
