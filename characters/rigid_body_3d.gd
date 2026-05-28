@@ -1,5 +1,6 @@
 class_name Character extends RigidBody3D
 
+@export var health_componant: HealthComponant
 var facing: Vector3 = Vector3.FORWARD
 var movement_vector: Callable = func(): return Vector2(0, -1)
 var alt_impact_sound: bool = false
