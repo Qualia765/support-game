@@ -19,7 +19,7 @@ var time_till_recalculate: float = 0.
 var was_actually_grounded_last_frame: bool = false
 
 func _ready():
-	body.movement_vector = func(): return Vector2(0, 0)
+	body.movement_vector = func(): return Vector2(-1, 0)
 
 
 func _physics_process(delta: float) -> void:
@@ -41,12 +41,12 @@ func _physics_process(delta: float) -> void:
 	var basis_z = basis_x.cross(basis_y).normalized()
 	knight_girl.basis = Basis(basis_x, basis_y, basis_z) * 0.265
 	
-	#if randf() < 0.002 or (
-		#body.off_edge_recently < body.JUMP_MISS_TIMING_FORGIVNESS_FRAMES
-		#and body.off_edge_recently != 0
-		#and not is_actually_grounded
-	#):
-		#body.jump()
+	if randf() < 0.002 or (
+		body.off_edge_recently < body.JUMP_MISS_TIMING_FORGIVNESS_FRAMES
+		and body.off_edge_recently != 0
+		and not is_actually_grounded
+	):
+		body.jump()
 	
 	was_actually_grounded_last_frame = is_actually_grounded
 	
