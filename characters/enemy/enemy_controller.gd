@@ -19,7 +19,7 @@ var time_till_recalculate: float = 0.
 var was_actually_grounded_last_frame: bool = false
 
 func _ready():
-	body.movement_vector = func(): return Vector2(-1, 0)
+	body.movement_vector = func(): return Vector2(-1.5, 0)
 
 
 func _physics_process(delta: float) -> void:
